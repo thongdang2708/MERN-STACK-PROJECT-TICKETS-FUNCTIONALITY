@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.status-new {
+    padding: 5px;
+    color: green;
+    text-transform: uppercase;
+
+
+}
+
+.status-opening {
+    padding: 5px;
+    color: yellow;
+    text-transform: uppercase;
+}
+
+.status-closed {
+    padding: 5px;
+    color: red;
+    text-transform: uppercase;
+}
