@@ -130,9 +130,14 @@ function Ticket() {
             </div>
         </div>
 
-        {notes.map((note) => (
-            <SingleNote key={note._id} note={note} ticketId={params.id}/>
-        ))}
+        {ticket.status !== "closed" && (
+            <div>
+            {notes.map((note) => (
+                <SingleNote key={note._id} note={note} ticketId={params.id}/>
+            ))}
+            </div>
+        )};
+        
 
         <Modal isOpen={modalOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Add Note">
             <div className='flex items-center justify-between mb-5'>
