@@ -9,16 +9,24 @@ import { logoutFunction } from '../features/auth/AuthSlice';
 
 function Header({changeMode}) {
 
+    //Set state for changing mode
     let [modeHeader, setModeHeader] = useState(false);
 
+    //Global State of User
     let {user} = useSelector(state => state.auth);
 
+
+    //Set Dispatch
     let dispatch = useDispatch();
     let navigate = useNavigate();
+
+    //Function to change mode
     const changeModeHeader = () => {
         setModeHeader(!modeHeader);
         changeMode();
     };
+
+    //Function to log out
 
     const LogOut = () => {
 
@@ -35,6 +43,8 @@ function Header({changeMode}) {
                 </Link>
             </div>
 
+
+            {/* If a user, there are notification of user's name and log out function. If not, there are register and login buttons*/}
 
             {user ? <div className="flex p-5 items-center justify-between"> 
                 <div className="p-2 bg-emerald-500 rounded-lg shadow-lg mr-5 text-black"> Hello <span className="font-bold">  {user.name} </span> </div>

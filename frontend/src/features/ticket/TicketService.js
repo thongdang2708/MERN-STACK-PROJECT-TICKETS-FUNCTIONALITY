@@ -3,6 +3,8 @@ import axios from "axios";
 
 const API_URL = "/api/tickets/";
 
+//Create Ticket
+
 const createTicket = async (ticketData, token) => {
 
     let config = {
@@ -18,11 +20,16 @@ const createTicket = async (ticketData, token) => {
 
 };
 
+//Display tickets
+
 const getTickets = async (token) => {
+
+
 
     let config = {
         headers: {
             "Authorization": `Bearer ${token}`
+
         }
     };
 
@@ -30,6 +37,9 @@ const getTickets = async (token) => {
 
     return response.data;
 };
+
+
+//Display Single Ticket
 
 const getSingleTicket = async (id, token) => {
 
@@ -44,6 +54,8 @@ const getSingleTicket = async (id, token) => {
     return response.data; 
 };
 
+
+//Update Ticket
 
 const updateTicket = async (id, token) => {
 

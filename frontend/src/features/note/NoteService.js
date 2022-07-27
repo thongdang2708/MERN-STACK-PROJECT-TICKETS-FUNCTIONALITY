@@ -5,6 +5,8 @@ import axios from "axios";
 const API_URL = "/api/tickets/";
 const NOTE_URL = "/api/notes/";
 
+//Display notes
+
 const showNotes = async (ticketId, token) => {
 
     let config = {
@@ -17,6 +19,8 @@ const showNotes = async (ticketId, token) => {
 
     return response.data;
 };
+
+//Add notes
 
 const addNotes = async (noteValue, id, token) => {
     
@@ -33,6 +37,8 @@ const addNotes = async (noteValue, id, token) => {
     return response.data;
 };
 
+//Edit note
+
 const editNote = async (noteText, id, token) => {
 
     let config = {
@@ -47,6 +53,8 @@ const editNote = async (noteText, id, token) => {
 
     return response.data;
 };
+
+//Delete note
 
 const deleteNote = async (id, token) => {
 

@@ -20,6 +20,8 @@ import { useState } from 'react';
 import {FaTimes} from "react-icons/fa";
 import { createMoreNote } from '../features/note/NoteSlice';
 
+
+//Set styles for modal
 const customStyles = {
     content: {
         width: "600px",
@@ -33,20 +35,40 @@ const customStyles = {
     }
 };
 
+//Set up modal
+
 Modal.setAppElement("#root");
 
 function Ticket() {
 
+    //Set params
     let params = useParams();
+
+    //Set dispatch
     let dispatch = useDispatch();
+
+    //Set Global State
     let {ticket, isError, isSuccess, isLoading, message} = useSelector(state => state.ticket);
+
+    //Global State of Note
     let {notes, isNoteLoading} = useSelector(state => state.note);
-    let [modalOpen, setModalOpen] = useState(false);
+
+    //Set Text
     let [noteText, setNoteText] = useState("");
+
+
+    //Set state for opening and closing modal
+    let [modalOpen, setModalOpen] = useState(false);
+   
     let openModal = () => setModalOpen(true);
-    let closeModal = () => setModalOpen(false);
+    let closeModal = () => {
+        setModalOpen(false);
+        setNoteText("");
+    };
     let navigate = useNavigate();   
 
+
+    //Display single ticket
     useEffect(() => {
 
         if (ticket.message) {
@@ -57,15 +79,21 @@ function Ticket() {
         dispatch(displayNotes(params.id));
     },[params.id, ticket.message]);
 
+    //Close ticket
+
    const handleClose = (id) => {
        dispatch(updateSingleTicket(id));
        toast.success("Closed successfully!");
        navigate("/tickets");
    }
 
+   //Set change for note text
+
    const handleChange = (e) => {
        setNoteText(e.target.value);
    }
+
+   //Submit to add note
 
    const handleSubmit = (et) => {
        et.preventDefault();
@@ -138,7 +166,7 @@ function Ticket() {
             </div>
         )};
         
-
+        {/* Modal to add notes */}
         <Modal isOpen={modalOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Add Note">
             <div className='flex items-center justify-between mb-5'>
             <h3 className="text-xl text-bold text-black"> Add Note </h3>

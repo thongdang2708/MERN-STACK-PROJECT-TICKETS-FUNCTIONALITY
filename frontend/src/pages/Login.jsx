@@ -9,15 +9,21 @@ import { useNavigate } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 function Login() {
 
+  //Set data for login form
   let [formData, setFormData] = useState({
       email: "",
       password: ""
   }); 
 
+  //Set dispatch and navigate
   let dispatch = useDispatch();
   let navigate = useNavigate();
+
+  //Global state of user
   let {user, isError, isSuccess, message, isLoading} = useSelector(state => state.auth);
 
+
+  //Set effect when there is success or error in a login page
   useEffect(() => {
       if (isError) {
         toast.error(message)
@@ -31,6 +37,8 @@ function Login() {
 
   }, [isError, isSuccess, message, user, dispatch, navigate]);
 
+  //Set changes for data of login form
+
   const handleChange = (e) => {
 
       let {name, value} = e.target;
@@ -40,6 +48,8 @@ function Login() {
         [name]: value
       }))
   };
+
+  //Submit to login
 
   const handleSubmit = (et) => {
       et.preventDefault();

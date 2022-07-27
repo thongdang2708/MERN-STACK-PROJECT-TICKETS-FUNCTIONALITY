@@ -3,7 +3,6 @@
 let User = require("../models/userModel");
 let Ticket = require("../models/ticketModel");
 let asyncHandler = require("express-async-handler");
-const { response } = require("express");
 
 //@desc           Get All Tickets 
 //@route          GET   /api/tickets
@@ -11,14 +10,15 @@ const { response } = require("express");
 
 exports.getAllTickets = asyncHandler(async (req, res, next) => {
 
-    let user = await User.findById(req.user.id);
+    let user = await User.findById(req.user._id);
 
     if (!user) {
         res.status(401)
         throw new Error("User not found")
     };
 
-    let tickets = await Ticket.find({ user: req.user.id});
+
+    let tickets = await Ticket.find({ticket: req.user._id});
 
     res.status(200).json(tickets);
 

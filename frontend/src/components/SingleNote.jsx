@@ -10,18 +10,26 @@ import { useState } from 'react';
 import { deleteForNote } from '../features/note/NoteSlice';
 
 function SingleNote({note, ticketId}) {
+
+    //Global state for user and item
     let {user} = useSelector(state => state.auth);
     let {item} = useSelector(state => state.note);
     let [text, setText] = useState("");
     let dispatch = useDispatch();
 
+
+    //Click to choose note to edit
     const handleClick = (note) => {
         dispatch(addEditItem(note));
     };
 
+
+    //Click not tot choose note to edit
     const backFunction = () => {
         dispatch(resetForItem());
     };
+
+    //Update note
 
     const updateNote = (text, id) => {
         let updateNote = {
@@ -32,6 +40,8 @@ function SingleNote({note, ticketId}) {
         dispatch(editForNote(updateNote));
         dispatch(resetForItem());
     };
+
+    //Delete Note
 
     const deleteNote = (id) => {
 

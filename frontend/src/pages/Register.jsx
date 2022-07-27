@@ -10,6 +10,7 @@ import { resetFunction } from '../features/auth/AuthSlice';
 import Spinner from '../components/Spinner';
 function Register() {
 
+  //Set state for register form
   let [formData, setFormData] = useState({
     "name": "",
     "email": "",
@@ -17,11 +18,17 @@ function Register() {
     "password2": ""
   });
   
+  //Set dispatch and navigate
   let dispatch = useDispatch();
   let navigate = useNavigate();
 
+
+  //Global state of user
+
   let {user, isLoading, isError, isSuccess, message} = useSelector(state => state.auth);
 
+
+  //Set effect when there is success or error in a register page
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -33,7 +40,9 @@ function Register() {
 
     dispatch(resetFunction());
   }, [isError, isSuccess, user, message, navigate, dispatch]);
+
  
+  //Set change for data of register form
   const handleChange = (e) => {
 
     let {name, value} = e.target;
@@ -44,7 +53,7 @@ function Register() {
     }))
   };
 
-
+  //Submit to register
   const handleSubmit = (et) => {
       et.preventDefault();
 

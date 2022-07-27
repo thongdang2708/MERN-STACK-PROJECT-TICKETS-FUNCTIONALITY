@@ -13,14 +13,21 @@ import { Link } from 'react-router-dom';
 
 function NewTicket() {
 
+    //Global state of user
+
     let {user} = useSelector(state => state.auth);
 
+    //Global state of ticket
     let {isError, isLoading, isSuccess, message} = useSelector(state => state.ticket);
 
+    //Set state when there is an error
     let [sign, setSign]= useState(false);
 
+    //Set dispatch and navigate
     let dispatch = useDispatch();
-    let navigate = useNavigate();
+    let navigate = useNavigate(); 
+
+    //Set state to add new ticket
 
     let [name, setName] = useState(user.name);
     let [email, setEmail] = useState(user.email);
@@ -29,6 +36,7 @@ function NewTicket() {
         description: ""
     });
 
+    //Set effect when there is wrong or success
     
     useEffect(() => {
         if (isError) {
@@ -43,7 +51,7 @@ function NewTicket() {
         dispatch(resetFunctionForTicket());
     }, [isError, isSuccess, dispatch, navigate, message]);
 
-
+    //Set changes for data of new ticket
 
     const handleChange = (e) => {
         let {name, value} = e.target;
@@ -53,6 +61,8 @@ function NewTicket() {
             [name]: value
         }))
     };
+
+    //Submit to add new ticket
 
     const handleSubmit = (et) => {
 

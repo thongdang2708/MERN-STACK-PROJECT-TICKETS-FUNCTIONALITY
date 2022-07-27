@@ -15,6 +15,7 @@ const initialState = {
     message: ""
 };
 
+//Function to display notes
 export const displayNotes = createAsyncThunk("/note/displayNote",
     async (user, thunkAPI) => {
         try {
@@ -29,7 +30,9 @@ export const displayNotes = createAsyncThunk("/note/displayNote",
             return thunkAPI.rejectWithValue(message);
         }
     }
-)
+);
+
+//Function to create note
 
 export const createMoreNote = createAsyncThunk("/note/createNote",
         async (user, thunkAPI) => {
@@ -45,7 +48,9 @@ export const createMoreNote = createAsyncThunk("/note/createNote",
                 return thunkAPI.rejectWithValue(message);
             }
         }
-)
+);
+
+//Function to choose note to edit
 
 export const addEditItem = createAsyncThunk("/note/addEditItem",
         async (user, thunkAPI) => {
@@ -55,6 +60,8 @@ export const addEditItem = createAsyncThunk("/note/addEditItem",
             }
         }
 );
+
+//Function to edit note
 
 export const editForNote = createAsyncThunk("/note/editNote",
         async (user, thunkAPI) => {
@@ -70,6 +77,8 @@ export const editForNote = createAsyncThunk("/note/editNote",
         }
 );
 
+//Function to delete note
+
 export const deleteForNote = createAsyncThunk("/note/deleteNote",
         async (user, thunkAPI) => {
             try {
@@ -83,7 +92,7 @@ export const deleteForNote = createAsyncThunk("/note/deleteNote",
                 return thunkAPI.rejectWithValue(message);
             }
         }
-)
+);
 
 
 export const NoteSlice = createSlice({

@@ -8,6 +8,6 @@ function Spinner() {
         <img src={Loading} width={180} alt="loading" className="inline-block text-center"/>
     </div>
   )
-}
+};
 
 export default Spinner

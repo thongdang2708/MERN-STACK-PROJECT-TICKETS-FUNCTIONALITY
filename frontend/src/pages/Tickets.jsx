@@ -10,18 +10,13 @@ import Spinner from '../components/Spinner';
 
 function Tickets() {
 
-
+    //Global state for ticket
     let {tickets, isSuccess, isLoading} = useSelector(state => state.ticket);
 
     let dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     return () => {
-    //         if (isSuccess) {
-    //             dispatch(resetFunctionForTicket());
-    //         }
-    //     }
-    // }, [isSuccess]);
+    
+    //Reset function when there is success
 
 
     useEffect(() => {
@@ -32,12 +27,14 @@ function Tickets() {
         }
     },[isSuccess]);
 
+    //Fetch tickets to DOM
     useEffect(() => {
         dispatch(displayTickets());
 
         //eslint-disable-next-line
     },[]);
 
+    console.log(tickets);
     if (isLoading) {
         return <Spinner />
     }
