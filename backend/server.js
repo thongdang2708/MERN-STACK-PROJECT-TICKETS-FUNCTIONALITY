@@ -8,7 +8,8 @@ const {errorHandler} = require("./middleware/errorHandler");
 const connectDB = require("./config/db");
 const ticketRoutes = require("./routes/ticketRoutes");
 const app = express();
-const noteRoute = require("./routes/noteRoutes")
+const noteRoute = require("./routes/noteRoutes");
+const path = require("path");
 
 connectDB();
 
